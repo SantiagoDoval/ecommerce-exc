@@ -10,26 +10,32 @@ import SignIn from '../SignIn/SignIn'
 
 import './App.css'
 import Navbar from '../../Components/Navbar/Navbar'
+import { ContextoData } from '../../data/ContextoData'
+import CheckoutMenu from '../../Components/CheackoutMenu/CheckoutMenu'
 
-const AppRoutes = ()=>{
-  let routes =useRoutes([
-    {path: '/', element: <Home /> },
-    {path: '/my-orders', element: <MyOrders /> },
-    {path: '/my-account', element: <MyAccount /> },
-    {path: '/my-order', element: <MyOrder /> },
-    {path: '/sign-in', element: <SignIn /> },
-    {path: '/*', element: <NotFound /> },
+const AppRoutes = () => {
+  let routes = useRoutes([
+    { path: '/', element: <Home /> },
+    { path: '/my-orders', element: <MyOrders /> },
+    { path: '/my-account', element: <MyAccount /> },
+    { path: '/my-order', element: <MyOrder /> },
+    { path: '/sign-in', element: <SignIn /> },
+    { path: '/*', element: <NotFound /> },
   ])
   return routes;
 }
 
-const App=()=> {
+const App = () => {
   return (
     <>
-      <BrowserRouter>
-        <Navbar />
-        <AppRoutes />
-      </BrowserRouter>
+      <ContextoData>
+        <BrowserRouter>
+          <Navbar />
+          <CheckoutMenu />
+          <AppRoutes />
+        </BrowserRouter>
+      </ContextoData>
+
     </>
   )
 }

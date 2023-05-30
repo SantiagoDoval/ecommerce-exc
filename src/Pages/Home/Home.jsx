@@ -1,7 +1,8 @@
 import React, {useState,useEffect} from 'react'
 import Layout from '../../Components/Layout/Layout'
 import Card from '../../Components/Card/Card'
-import useData from '../../data/useData';
+import ProductDetail from '../../Components/ProductDetail/ProductDetail'
+
 
 
 const Home = () => {
@@ -12,13 +13,13 @@ const Home = () => {
 
   
   useEffect(()=>{
-    const {data}=useData();
+    // const {data}=useData();
     
-    setItems(data);
-    console.log(data)
-    // fetch(url)
-    //   .then(response=>response.json())
-    //   .then(data=>setItems(data))    
+    // setItems(data);
+    // console.log(data)
+    fetch(url)
+      .then(response=>response.json())
+      .then(data=>setItems(data))    
   },[])
 
   return (
@@ -30,8 +31,8 @@ const Home = () => {
           <Card key={item.id} data={item} />
         ))
       }
-      </div>
-      <Card items={items} />
+      </div>   
+      <ProductDetail />   
     </Layout>
   )
 }

@@ -1,14 +1,38 @@
-import Reac from 'react'
+import { useContext } from 'react'
+import { productContext } from '../../data/ContextoData'
+import { PlusIcon } from '@heroicons/react/24/solid'
 
+const Card = ({ data }) => {
+    const context = useContext(productContext)
+    const base=context.CartProducts;
 
+    
+    const showProduct = (productDetail)=>{
+        context.closeCheckoutMenu();  
+        context.ViewDetailProduct()
+        context.setProductDetailShow(productDetail)
+    }
 
-const Card = ({data}) => {     
+    const addProductsCart = (event,ProductData) => {
+        event.stopPropagation();
+        context.setCount(context.count + 1)
+        context.setCartProducts([...base,ProductData])
+        context.CloseDetailProduct();
+        context.openCheckoutMenu();   
+    }
+
     return (
-        <div className='bg-white cursor-pointer w-56 h-60 rounded-lg'>
+        <div
+            onClick={()=>showProduct(data)}
+            className='bg-white cursor-pointer w-56 h-60 rounded-lg'>
             <figure className='relative mb-2 w-full h-4/5'>
                 <span className='absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5'>{data?.category.name}</span>
                 <img className='w-full h-full object-cover rounded-lg' src={data?.images[0]} alt={data?.title} />
-                <div className='absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-0.5'>+</div>
+                <div
+                    onClick={(event)=>addProductsCart(event,data)}
+                    className='absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-0.5'>
+                    <PlusIcon  className='h-4 w-4 text-black' />
+                </div>
             </figure>
             <p className='flex justify-between items-center'>
                 <span className='text-sm font-light'>{data?.title}</span>
