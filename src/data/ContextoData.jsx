@@ -3,10 +3,6 @@ import { useState, createContext } from "react";
 export const productContext=createContext();
 
 export const ContextoData =({children}) => {
-    // const url = "https://api.escuelajs.co/api/v1/products?offset=0&limit=20";
-    // const fetchData = await fetch(url);
-    // const { data } = fetchData.json();
-    // return data;
 
     const [count, setCount] = useState(0);
     const [isProductDetailOpen,setIsProductDetailOpen]=useState(false);
@@ -19,6 +15,8 @@ export const ContextoData =({children}) => {
     const [isCheckoutMenuOpen,setIsCheckoutMenuOpen]=useState(false);
     const openCheckoutMenu = () => {setIsCheckoutMenuOpen(true)}
     const closeCheckoutMenu = ()=>{setIsCheckoutMenuOpen(false)}
+
+    const [order,setOrder]=useState([]);
     
 
     return (
@@ -34,7 +32,9 @@ export const ContextoData =({children}) => {
             setCartProducts,
             openCheckoutMenu,
             closeCheckoutMenu,
-            isCheckoutMenuOpen           
+            isCheckoutMenuOpen,
+            order,
+            setOrder           
         }}>
             {children}
         </productContext.Provider> 

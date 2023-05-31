@@ -74,9 +74,9 @@ const Navbar = () => {
                         Sign in
                     </NavLink>
                 </li>
-                <li onClick={()=>context.openCheckoutMenu()} className='flex items-center '>
+                <li onClick={()=>context.openCheckoutMenu()} className='flex items-center cursor-pointer'>
                     <ShoppingBagIcon className='w-6 h-6 text-black'/>
-                    <p>{context.count}</p>
+                    <p className='font-medium'>{context.CartProducts.length}</p>
                 </li>
             </ul>
         </nav>
