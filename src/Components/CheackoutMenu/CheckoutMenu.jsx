@@ -3,6 +3,7 @@ import { productContext } from '../../data/ContextoData';
 import { useContext } from 'react';
 import OrderCard from '../OrderCard/OrderCard';
 import { totalPrice } from '../../utils';
+import { Link } from 'react-router-dom';
 
 const CheckoutMenu = () => {
     const { CartProducts,
@@ -26,6 +27,8 @@ const CheckoutMenu = () => {
         }
         setOrder([...order,orderToAdd])
         setCartProducts([])
+        closeCheckoutMenu();
+        console.log(order)
     }
 
     return (
@@ -46,7 +49,9 @@ const CheckoutMenu = () => {
                     <p className='text-lg font-light'>Total:</p>
                     <p className='text-lg font-medium'>${totalPrice(CartProducts)}</p>
                 </div>
-                <button className='w-full bg-black text-white py-3 text-center mt-5 rounded-lg' onClick={() => handleCheckout()}>Pay</button>
+                <Link to='/my-order/last'>
+                    <button className='w-full bg-black text-white py-3 text-center mt-5 rounded-lg' onClick={() => handleCheckout()}>Pay</button>
+                </Link>
             </div>
         </aside>
     )
