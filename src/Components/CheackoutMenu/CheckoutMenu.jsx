@@ -19,7 +19,9 @@ const CheckoutMenu = () => {
     }
 
     const handleCheckout = () => {
+        const id=Date.now();
         const orderToAdd = {
+            id:id,
             date: '01.02.2023',
             products: CartProducts,
             total: CartProducts.length,
@@ -27,8 +29,8 @@ const CheckoutMenu = () => {
         }
         setOrder([...order,orderToAdd])
         setCartProducts([])
-        closeCheckoutMenu();
-        console.log(order)
+        closeCheckoutMenu();        
+
     }
 
     return (
@@ -49,7 +51,7 @@ const CheckoutMenu = () => {
                     <p className='text-lg font-light'>Total:</p>
                     <p className='text-lg font-medium'>${totalPrice(CartProducts)}</p>
                 </div>
-                <Link to='/my-order/last'>
+                <Link to='/my-orders/last'>
                     <button className='w-full bg-black text-white py-3 text-center mt-5 rounded-lg' onClick={() => handleCheckout()}>Pay</button>
                 </Link>
             </div>
