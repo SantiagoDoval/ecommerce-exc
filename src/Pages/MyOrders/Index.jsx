@@ -7,12 +7,11 @@ import { Link } from 'react-router-dom'
 
 const MyOrders = () => {
   const {order}=useContext(productContext);
-  console.log(order)
 
   return (
     <Layout>
       <div className='flex items-center justify-center w-80 relative'>
-        <h1 className='mb-3'>My Orders</h1>
+        <h1 className='mb-3 font-medium text-xl'>My Orders</h1>
       </div>
       {order.map((order,index)=>(
         <Link key={index} to={`/my-orders/${order.id}`}>

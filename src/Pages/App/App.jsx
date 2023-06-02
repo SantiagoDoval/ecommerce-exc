@@ -16,6 +16,7 @@ import CheckoutMenu from '../../Components/CheackoutMenu/CheckoutMenu'
 const AppRoutes = () => {
   let routes = useRoutes([
     { path: '/', element: <Home /> },
+    { path: '/:category', element: <Home /> },
     { path: '/my-account', element: <MyAccount /> },
     { path: '/my-order', element: <MyOrder /> },
     { path: '/my-orders', element: <MyOrders /> },
