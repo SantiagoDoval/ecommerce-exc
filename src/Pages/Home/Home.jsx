@@ -11,6 +11,10 @@ const Home = () => {
 
   const { items, inputData, setInputData, filteredItems } = useContext(productContext)  
   
+  useEffect(()=>{
+    setInputData('')
+  },[])
+
   const {category}=useParams()
   console.log(items)
 
